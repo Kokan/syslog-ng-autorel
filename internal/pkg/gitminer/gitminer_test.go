@@ -16,19 +16,10 @@ func TestGetMergeRequest(t *testing.T) {
 	firstCommit := "7be16513a3722488f5e3224a39f7076e6167f72b"
 	lastCommit := "82a7a012353143314d8482b7f249e56367a4da59"
 
-	// find commits
-	commits, err := gm.getMergeCommits(firstCommit, lastCommit)
+	mergeRequests, err := gm.GetMergeRequests(firstCommit, lastCommit)
 	if err != nil {
 		panic(err)
 	}
-	//fmt.Println(commits)
-
-	// parse commits for merge request ids
-	mergeReqsIDs, err := gm.getParsedMergeRequestIDs(commits)
-	fmt.Println(mergeReqsIDs)
-
-	// fetch the merge requests
-	mergeRequests, err := gm.getMergeRequests(mergeReqsIDs)
 	panic(err)
 	fmt.Println(len(mergeRequests))
 }
