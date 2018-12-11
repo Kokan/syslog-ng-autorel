@@ -46,7 +46,7 @@ var gitMinerInstance *GitMiner
 var once sync.Once
 
 func (gm *GitMiner) getMergeCommits(firstCommit string, lastCommit string) ([]git.Commit, error) {
-	repo, err := git.InitRepository(gm.repositoryPath, false)
+	repo, err := git.OpenRepository(gm.repositoryPath)
 	if err != nil {
 		return nil, errors.Wrap(err, fmt.Sprintf("Error in intiliazing git repository"))
 	}
