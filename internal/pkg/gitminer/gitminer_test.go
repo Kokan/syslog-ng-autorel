@@ -2,18 +2,10 @@ package gitminer
 
 import (
 	"fmt"
-	"regexp"
 	"testing"
 
 	"github.com/darxtrix/syslog-ng-autorel/internal/pkg/goroutinepool"
 )
-
-func TestRegexMatching(t *testing.T) {
-	str := "Merg 123 e pull request #2401 from 123 #2344 Kokan/binary-hexoctal "
-	re := regexp.MustCompile("#([0-9]+)")
-	k := re.FindString(str)
-	fmt.Println(k)
-}
 
 func TestGetMergeRequest(t *testing.T) {
 	pool := goroutinepool.NewGoRoutinePool(2, 10, 1)
