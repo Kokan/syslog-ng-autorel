@@ -20,9 +20,8 @@ func TestGetMergeRequest(t *testing.T) {
 	lastCommit := "b97accac4b4849fd7c82a9aef0da0ca4171c8eb4"
 
 	mergeRequests, err := gm.GetMergeRequests(firstCommit, lastCommit)
+	fmt.Println(len(mergeRequests))
 	if err != nil {
 		panic(err)
 	}
-	panic(err)
-	fmt.Println(len(mergeRequests))
 }
