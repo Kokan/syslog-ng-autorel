@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/darxtrix/syslog-ng-autorel/internal/pkg/cache"
 	"github.com/darxtrix/syslog-ng-autorel/internal/pkg/gitservercli"
@@ -147,6 +148,8 @@ func (gm *GitMiner) getMergeRequests(mergeRequestsIDs []int) ([]gitservercli.Mer
 			if len(mergeRequests) == len(mergeRequestsIDs) { // all goroutines ran successfully
 				return mergeRequests, nil
 			}
+		case <-time.After(3 * time.Second):
+			return mergeRequests, errors.New("Error timeout while getting data")
 		}
 	}
 }
